@@ -18,10 +18,11 @@ class KNN:
         return max(set(k_labels), key=k_labels.count)
     
     def evaluate(self, X_test , Y_test):
+        predictions = [self.predict(X_test.iloc[i]) for i in range(len(X_test))]
+        accuracy = sum(predictions[i] == Y_test.iloc[i] for i in range(len(Y_test))) / len(Y_test)
         
-
+        return accuracy
         
-        pass
     
     def grid_search(self):
         pass
