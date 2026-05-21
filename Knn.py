@@ -6,12 +6,12 @@ class KNN:
         pass
     
     def fit(self , X , Y):
-        self.X_train= X
+        self.X_train= X.select_dtypes(include=['number'])
         self.Y_train = Y
         pass
     
     def predict(self , X):
-        distances = [self._distance(X, x) for x in self.X_train]
+        distances = [self._distance(X, row) for _, row in self.X_train.iterrows()]
         k_nearest = sorted(range(len(distances)), key=lambda i: distances[i])[:self.K]
         k_labels = [self.Y_train.iloc[i] for i in k_nearest]
 
@@ -37,3 +37,7 @@ class KNN:
         self.K = best_k
         return best_k, best_accuracy
         
+    def _distance(self, a, b):
+        a = list(a)
+        b = list(b)
+        return sum((a[i] - b[i])**2 for i in range(len(a))) ** 0.5

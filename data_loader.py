@@ -18,6 +18,7 @@ def load_data(file_path, target_col="target"):
 	print(df[target_col].value_counts())
 	X = df.drop(columns=[target_col])
 	Y = df[target_col]
+	X = X.select_dtypes(include=['number'])
 	return X, Y 
 
 
