@@ -17,7 +17,10 @@ class KNN:
 
         return max(set(k_labels), key=k_labels.count)
     
-    def evaluate(self):
+    def evaluate(self, X_test , Y_test):
+        
+
+        
         pass
     
     def grid_search(self):
