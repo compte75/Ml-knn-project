@@ -11,7 +11,7 @@ class KNN:
         pass
     
     def predict(self , X):
-        distance = [self._distance(X, x) for x in self.X_train]
+        distances = [self._distance(X, x) for x in self.X_train]
         k_nearest = sorted(range(len(distances)), key=lambda i: distances[i])[:self.K]
         k_labels = [self.Y_train.iloc[i] for i in k_nearest]
 
